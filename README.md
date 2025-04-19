@@ -85,7 +85,7 @@ Execute the playbook with the following command:
 ```bash
 ansible-playbook playbook.yml --ask_become_pass 
 ```
-### To turn onn compression
+### To enable compression
 
 ```bash
 ansible-playbook playbook.yml --ask_become_pass -e compress=true
