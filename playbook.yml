@@ -1,7 +1,7 @@
 #=============================================================================
 #DEVELOPER: Aswin KS
 #DATE: 19-04-2025
-#ABOUT: Fetch config files from remote server and create CSV report
+#ABOUT: Fetch config files from remote server
 #============================================================================
 
 - name: Collect configuration logs from remote servers.
@@ -14,7 +14,7 @@
       - /etc/ssh/ssh_config
       - /etc/hosts
       - /etc/resolv.conf
-      - /etc/resolv.confff
+      
     
   tasks:
     - name: Check whether the file exist on remote host
