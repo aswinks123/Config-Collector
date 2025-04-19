@@ -29,12 +29,14 @@ Ensure that all specified files exist on the remote host before fetching them.
 
 By default, this playbook fetches the following configuration files from each remote host:
 
+```bash
+
 /etc/ssh/ssh_config
 
 /etc/hosts
 
 /etc/resolv.conf
-
+```
 You can add or remove files from the files_to_copy list in the playbook as needed.
 
 ## Usage
