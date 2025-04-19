@@ -54,7 +54,7 @@ Clone the repository to your local machine:
 
 ```bash
 git clone https://github.com/aswinks123/Config-Collector
-cd <Config-Collector>
+cd Config-Collector
 ``` 
 
 ### 2. Configure the Inventory
@@ -84,6 +84,11 @@ Execute the playbook with the following command:
 
 ```bash
 ansible-playbook playbook.yml --ask_become_pass 
+```
+### To turn onn compression
+
+```bash
+ansible-playbook playbook.yml --ask_become_pass -e compress=true
 ```
 
 ### 5. Result
