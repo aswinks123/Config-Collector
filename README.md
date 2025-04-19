@@ -10,15 +10,15 @@ This Ansible playbook is designed to fetch specific configuration files from rem
 
 ## Features
 
-Fetch configuration files from remote servers.
+✨ Fetch configuration files from remote servers.
 
-Create a local directory to store the fetched files with the date appended to the directory name.
+✨ Create a local directory to store the fetched files with the date appended to the directory name.
 
-Organize configuration files based on the host they were fetched from.
+✨ Organize configuration files based on the host they were fetched from.
 
-Ensure that all specified files exist on the remote host before fetching them.
+✨ Ensure that all specified files exist on the remote host before fetching them.
 
-Compress the files to tar.gz based on user requirement
+✨ Compress the files to tar.gz based on user requirement
 
 ## Additional Flags
 ```bash
