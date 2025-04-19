@@ -1,7 +1,7 @@
 # Config-Collector - Ansible Configuration File Fetcher
 
 <div style="display: flex; align-items: center;">
-    <img src="icon.png" alt="Icon" width="80" style="margin-right: 10px;"/>
+    <img src="logo.png" alt="Icon" width="80" style="margin-right: 10px;"/>
     </div>
 
 ## Overview
