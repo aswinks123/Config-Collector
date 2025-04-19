@@ -83,12 +83,12 @@ files_to_copy:
 Execute the playbook with the following command:
 
 ```bash
-ansible-playbook playbook.yml --ask_become_pass 
+ansible-playbook playbook.yml --ask-become-pass 
 ```
 ### To enable compression
 
 ```bash
-ansible-playbook playbook.yml --ask_become_pass -e compress=true
+ansible-playbook playbook.yml --ask-become-pass -e compress=true
 ```
 
 ### 5. Result
