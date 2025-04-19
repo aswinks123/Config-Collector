@@ -18,6 +18,13 @@ Organize configuration files based on the host they were fetched from.
 
 Ensure that all specified files exist on the remote host before fetching them.
 
+Compress the files to tar.gz based on user requirement
+
+## Additional Flags
+```bash
+-e compress=true
+# Use this flag to compress the files. By default compress is set to false
+```
 ## Requirements
 
 - Ansible 2.x or higher
