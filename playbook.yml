@@ -1,0 +1,39 @@
+- name: Collect configuration logs from remote servers.
+  hosts: servers
+  gather_facts: false
+
+  vars:
+    date_folder: "{{ lookup ('pipe', 'date +%Y-%m-%d') }}"
+    files_to_copy:
+      - /etc/ssh/ssh_config
+      - /etc/hosts
+      - /etc/resolv.conf
+      - /etc/resolv.confff
+    
+  tasks:
+    - name: Check whether the file exist on remote host
+      stat:
+        path: "{{ item }}"
+        register: file_stat
+        loop: "{{ files_to_copy }}"
+
+
+
+
+
+
+
+    - name: Create a local directory to store files
+      local_action:
+        module: file
+        path: "collected_config/{{ inventory_hostname}}-{{ date_folder }}"
+        state: directory
+        recurse: yes #if the parent directories don’t exist, create them too
+  
+    - name: Fetch the config files from remote servers
+      fetch:
+        src: "{{ item }}"
+        dest: "collected_config/{{ inventory_hostname }}-{{ date_folder }}/" # / means fetch inside the directory
+        flat: yes #saves the filename, ignoring the full path.
+      loop: "{{ files_to_copy }}"
+
