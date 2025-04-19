@@ -1,7 +1,7 @@
 #=============================================================================
 #DEVELOPER: Aswin KS
 #DATE: 19-04-2025
-#ABOUT: Fetch config files from remote server
+#ABOUT: Fetch config files from remote server and organize it in Directoried along with date
 #============================================================================
 
 - name: Collect configuration logs from remote servers.
@@ -10,7 +10,7 @@
 
   vars:
     date_folder: "{{ lookup ('pipe', 'date +%Y-%m-%d') }}"
-    files_to_copy:
+    files_to_copy:   # Provide that path of files to fetch
       - /etc/ssh/ssh_config
       - /etc/hosts
       - /etc/resolv.conf
