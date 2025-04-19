@@ -55,12 +55,12 @@ Create or modify the inventory file (e.g., hosts) to include your target servers
 
 Example hosts file:
 
-
+```bash
 [servers]
 server1.example.com
 server2.example.com
 server3.example.com
-
+```
 
 ### 3. Modify the Playbook (Optional)
 In the playbook, you can modify the files_to_copy list to include or exclude any files as needed:
@@ -82,7 +82,7 @@ ansible-playbook playbook.yml --ask_become_pass
 ### 5. Result
 After the playbook completes, the configuration files will be fetched and stored locally in a directory structure like this:
 
-
+```bash
 collected_config/
   ├── server1.example.com-2025-04-19/
   │   ├── ssh_config
@@ -96,7 +96,7 @@ collected_config/
       ├── ssh_config
       ├── hosts
       └── resolv.conf
-
+```
 
 Each server will have its configuration files stored in a separate folder, with the current date as the folder name.
 
