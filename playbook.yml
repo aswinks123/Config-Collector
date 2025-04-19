@@ -9,7 +9,7 @@
   hosts: servers
   gather_facts: false
 
-#--------------------------------------------------< Variables to store the config file locations and default value of compress flag>
+#--------------------------------------------------< Variables to store the config file locations and default value of compress flag >
 
   vars:
     date_folder: "{{ lookup ('pipe', 'date +%Y-%m-%d') }}"
@@ -56,14 +56,14 @@
       when: compress_files == 'true'
       delegate_to: localhost
 
-#--------------------------------------------------< Check whether the directory exist before clean up if compress=true>
+#--------------------------------------------------< Check whether the directory exist before clean up if compress=true >
 
     - name: Check if the directory exists before clean-up
       stat:
         path: "collected_config/{{ inventory_hostname }}-{{ date_folder }}"
       register: dir_stat
 
-#--------------------------------------------------<Remove the directory if compress=true>    
+#--------------------------------------------------< Remove the directory if compress=true >    
 
     - name: Clean up uncompressed files
       file:

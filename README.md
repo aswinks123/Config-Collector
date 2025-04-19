@@ -1,7 +1,7 @@
 # Config-Collector - Ansible Configuration File Fetcher
 
 <div style="display: flex; align-items: center;">
-    <img src="logo.png" alt="Icon" width="80" style="margin-right: 10px;"/>
+    <img src="/resources/logo.png" alt="Icon" width="80" style="margin-right: 10px;"/>
     </div>
 
 ## Overview
@@ -114,5 +114,7 @@ Each server will have its configuration files stored in a separate folder, with 
 
 ### Sample Screenshot
 
+![alt text](/resources/image.png)
 
-![alt text](image.png)
+
+![alt text](/resources/image-1.png)
