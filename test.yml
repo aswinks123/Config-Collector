@@ -1,0 +1,6 @@
+- name: Compress the fetched files into a tarball
+  archive:
+    path: "collected_config/{{ inventory_hostname }}-{{ date_folder }}/"
+    dest: "collected_config/{{ inventory_hostname }}-{{ date_folder }}.tar.gz"
+    format: gz
+  when: compress_files == 'true' or compress_files == true

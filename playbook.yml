@@ -2,11 +2,14 @@
 #DEVELOPER: Aswin KS
 #DATE: 19-04-2025
 #ABOUT: Fetch config files from remote server and organize it in directories along with date
-#===============================================================================================
+#================================================================================================
+
 
 - name: Collect configuration logs from remote servers.
   hosts: servers
   gather_facts: false
+
+#--------------------------------------------------< Variables to store the config file locations and default value of compress flag>
 
   vars:
     date_folder: "{{ lookup ('pipe', 'date +%Y-%m-%d') }}"
@@ -14,8 +17,10 @@
       - /etc/ssh/ssh_config
       - /etc/hosts
       - /etc/resolv.conf
+    compress_files: "{{ compress | default('false') }}"  # Default compress is 'false' if not specified
       
-    
+ #--------------------------------------------------< To check whether the file exist >   
+
   tasks:
     - name: Check whether the file exist on remote host
       stat:
@@ -23,6 +28,7 @@
       register: file_stat
       loop: "{{ files_to_copy }}"
 
+#--------------------------------------------------< Create Directory structure in local machine >
 
     - name: Create a local directory to store files
       local_action:
@@ -30,10 +36,38 @@
         path: "collected_config/{{ inventory_hostname}}-{{ date_folder }}"
         state: directory
         recurse: yes #if the parent directories don’t exist, create them too
-  
+
+  #--------------------------------------------------< Fetch the files from remote server >
+
     - name: Fetch the config files from remote servers
       fetch:
         src: "{{ item }}"
         dest: "collected_config/{{ inventory_hostname }}-{{ date_folder }}/" # / means fetch inside the directory
         flat: yes #saves the filename, ignoring the full path.
       loop: "{{ files_to_copy }}"
+
+#--------------------------------------------------< Compress the files based on compress flag >
+
+    - name: Compress the fetched files into a tarball
+      archive:
+        path: "collected_config/{{ inventory_hostname }}-{{ date_folder }}/"
+        dest: "collected_config/{{ inventory_hostname }}-{{ date_folder }}.tar.gz"
+        format: gz
+      when: compress_files == 'true'
+      delegate_to: localhost
+
+#--------------------------------------------------< Check whether the directory exist before clean up if compress=true>
+
+    - name: Check if the directory exists before clean-up
+      stat:
+        path: "collected_config/{{ inventory_hostname }}-{{ date_folder }}"
+      register: dir_stat
+
+#--------------------------------------------------<Remove the directory if compress=true>    
+
+    - name: Clean up uncompressed files
+      file:
+        path: "collected_config/{{ inventory_hostname }}-{{ date_folder }}"
+        state: absent
+      when: compress_files == 'true'
+      delegate_to: localhost
