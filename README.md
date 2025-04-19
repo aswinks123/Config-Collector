@@ -1,8 +1,9 @@
 # Ansible Configuration File Fetcher
 
 <div style="display: flex; align-items: center;">
-    <img src="logo.png" alt="Icon" width="80" style="margin-right: 10px;"/>
+    <img src="icon.png" alt="Icon" width="80" style="margin-right: 10px;"/>
     </div>
+
 ## Overview
 
 This Ansible playbook is designed to fetch specific configuration files from remote Ubuntu servers and organize them into a directory structure locally, with the current date as part of the directory name. It is useful for system administrators who need to collect configuration files for auditing, backup, or analysis purposes.
