@@ -20,8 +20,8 @@
     - name: Check whether the file exist on remote host
       stat:
         path: "{{ item }}"
-        register: file_stat
-        loop: "{{ files_to_copy }}"
+      register: file_stat
+      loop: "{{ files_to_copy }}"
 
 
     - name: Create a local directory to store files
@@ -37,4 +37,3 @@
         dest: "collected_config/{{ inventory_hostname }}-{{ date_folder }}/" # / means fetch inside the directory
         flat: yes #saves the filename, ignoring the full path.
       loop: "{{ files_to_copy }}"
-
